@@ -5,6 +5,24 @@ Author: Pedro Henrique Carneiro de Araújo
     Vou copiar uns codigos aqui, mpra entender como usar o SQLAlchemy.
 """
 
+"""
+    Agora uma ligeira descrição do que o código faz, feita pelo chat GPT
+    
+    Este código utiliza a biblioteca SQLAlchemy para criar um objeto de conexão com um banco de dados MySQL e mapear as tabelas do banco de dados para objetos Python.
+
+Na primeira linha, ele importa as bibliotecas necessárias do SQLAlchemy. Em seguida, cria um objeto de conexão com o banco de dados MySQL usando o módulo PyMySQL.
+
+O objeto de conexão é criado usando a função `create_engine`, que recebe como argumento uma string de conexão que contém informações como o tipo de banco de dados, o tipo de conector, o nome do usuário, a senha, o local de acesso e o nome do schema.
+
+Depois disso, ele cria um objeto `DB` que acessa o banco de dados usando o objeto de conexão `motor` e, em seguida, usa o método `prepare` para mapear as tabelas do banco de dados para objetos Python. As tabelas são mapeadas usando o objeto `DB.classes`.
+
+Por fim, o código imprime o tipo do objeto Python que representa a tabela `aluno`.
+
+Quanto ao erro que você mencionou, não é possível saber qual é o erro sem ver a mensagem de erro. Se você puder compartilhar a mensagem de erro, poderei ajudá-lo a entender e corrigir o problema.
+"""
+
+
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.automap import automap_base
