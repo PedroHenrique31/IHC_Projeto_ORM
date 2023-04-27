@@ -33,6 +33,7 @@ Author: Pedro Henrique Carneiro de Araújo
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.automap import automap_base
+from funcaoMenu import menu
 
 # ------- Variáveis globais ---------------------------------------------------
 # Ligação com o DB feita por um objeto motor -engine- do SQLAlchemy ele que realiza o trabalho de conectar e mapear
@@ -73,3 +74,5 @@ print("========================================================================"
 for x in matriculadosPorDisciplina:
     print("Aluno: "+x.aluno.NOME+ " fez "+x.disciplina.NOME+" ("+x.disciplina.SIGLA+")")
 print("========================================================================")
+
+menu()
