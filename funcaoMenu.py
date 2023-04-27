@@ -24,3 +24,13 @@ def menu():
          print ('Opção inválida')
          input()
  # Finalizando o programa
+
+## Vamos colocar aqui as funcoes de CRUD
+def incluir():
+    pass
+def consultar():
+    pass
+def alterar():
+    pass
+def excluir():
+    pass

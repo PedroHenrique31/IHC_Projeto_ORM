@@ -33,7 +33,7 @@ Author: Pedro Henrique Carneiro de Araújo
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.automap import automap_base
-from funcaoMenu import menu
+from funcaoMenu import *
 
 # ------- Variáveis globais ---------------------------------------------------
 # Ligação com o DB feita por um objeto motor -engine- do SQLAlchemy ele que realiza o trabalho de conectar e mapear
@@ -55,24 +55,8 @@ fabrica_sessao = sessionmaker(bind=motor) # cria um objeto que gera uma sessão 
 ses = fabrica_sessao() # ses é uma sessão que possui 'motor' para se conectar ao BD
 #------------------------------------------------------------
 
-## Vamos listar alguma coisa agora
-alunos=ses.query(aluno).all()
-disciplinas=ses.query(disciplina).all()
 
-#print(type(alunos)) # é uma lista esse objeto
-for a in alunos:
-    print("Nome do aluno: "+a.NOME+" Data de nascimento: "+str(a.DATA_NASCIMENTO))
-print("========================================================================")
-print("========================= Disciplinas ==================================")
-for b in disciplinas:
-    print("Nome da disciplina: "+b.SIGLA+" - "+b.NOME+" | Carga horária: "+str(b.CARGA_HORARIA))
-print("========================================================================")
 
-matriculadosPorDisciplina=ses.query(matricula).all()
-#print(dir(matricula))
-print("========================================================================")
-for x in matriculadosPorDisciplina:
-    print("Aluno: "+x.aluno.NOME+ " fez "+x.disciplina.NOME+" ("+x.disciplina.SIGLA+")")
-print("========================================================================")
+
 
 menu()
