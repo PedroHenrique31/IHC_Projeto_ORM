@@ -47,7 +47,7 @@ class visualiza:
     def inserirAluno(self):
 
         aluno = self.BancoDados.classes.aluno # isso gera uma classe que representa a tablea aluno no banco
-        novoAluno=aluno()
+        novoAluno=aluno() # cria novo objeto do tipo aluno
         print(type(aluno))
         print("\n" * 30)
         print("Digite as informações a seguir")
@@ -55,8 +55,8 @@ class visualiza:
         nascimento = input("Data de nascimento do aluno: ")
         novoAluno.NOME=nome
         novoAluno.DATA_NASCIMENTO=nascimento
-        self.sessao.add(novoAluno)
-        self.sessao.commit()
+        self.sessao.add(novoAluno)# comando que escreve o insert
+        self.sessao.commit()# envia a alateração para o banco
 
     def consultar(self):
         pass
