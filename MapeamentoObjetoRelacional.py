@@ -58,5 +58,5 @@ ses = fabrica_sessao() # ses é uma sessão que possui 'motor' para se conectar 
 
 
 
-
-menu()
+camada_visao=visualiza(DB,ses)
+camada_visao.menu()
