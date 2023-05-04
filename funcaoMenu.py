@@ -22,9 +22,9 @@ class visualiza:
             if opc == '1':
                 self.incluir()
             elif opc == '2':
-                consultar()
+                self.consultar()
             elif opc == '3':
-                alterar()
+                self.alterar()
             elif opc == '4':
                 excluir()
             elif opc == '5':
@@ -63,7 +63,7 @@ class visualiza:
         alunos=self.sessao.query(ALUNO).all() # consulta tudo
         for alu in alunos:
             print('-------------------------------------------------------------------')
-            print("Aluno ID: "+str(alu.COD)+" Nome: "+alu.NOME+" Data nascimento: "+alu.DATA_NASCIMENTO)
+            print("Aluno ID: "+str(alu.COD)+" Nome: "+alu.NOME+" Data nascimento: "+str(alu.DATA_NASCIMENTO))
         input("Pressione [Enter] para voltar ao menu.")
 
 
@@ -75,7 +75,13 @@ class visualiza:
         for a in alunos:
             print("Aluno ID: "+str(a.COD)+" nome: "+a.NOME)
             print("---------------------------------------------------")
-
+        id_aluno_alterar=int(input("Digite o número de ID do aluno selecionado: "))
+        # Agora com o id do aluno vamos pegá-lo
+        aluno_alterar=self.sessao.query(self.BancoDados.classes.aluno).filter_by(COD=id_aluno_alterar).first()
+        aluno_alterar.NOME=input("Alterar nome [{}]: ".format(aluno_alterar.NOME))
+        aluno_alterar.DATA_NASCIMENTO=input("Alterar data de nascimento [{}]: ".format(aluno_alterar.DATA_NASCIMENTO))
+        self.sessao.commit() # pelo visto já faz o update
+        input("Pressione [Enter] para voltar ao menu.")
     def excluir(self):
         pass
 
