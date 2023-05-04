@@ -59,12 +59,22 @@ class visualiza:
         self.sessao.commit()# envia a alateração para o banco
 
     def consultar(self):
-        pass
+        ALUNO=self.BancoDados.classes.aluno # cria objeto tabela de alunos
+        alunos=self.sessao.query(ALUNO).all() # consulta tudo
+        for alu in alunos:
+            print('-------------------------------------------------------------------')
+            print("Aluno ID: "+str(alu.COD)+" Nome: "+alu.NOME+" Data nascimento: "+alu.DATA_NASCIMENTO)
+        input("Pressione [Enter] para voltar ao menu.")
+
 
 
     def alterar(self):
-        pass
-
+        #Mostra uma lista de alunos disponíveis
+        alunos=self.sessao.query(self.BancoDados.classes.aluno).all()
+        print("Alunos listados")
+        for a in alunos:
+            print("Aluno ID: "+str(a.COD)+" nome: "+a.NOME)
+            print("---------------------------------------------------")
 
     def excluir(self):
         pass
