@@ -26,7 +26,7 @@ class visualiza:
             elif opc == '3':
                 self.alterar()
             elif opc == '4':
-                excluir()
+                self.excluir()
             elif opc == '5':
                 continuar = False
             else:
@@ -83,7 +83,19 @@ class visualiza:
         self.sessao.commit() # pelo visto já faz o update
         input("Pressione [Enter] para voltar ao menu.")
     def excluir(self):
-        pass
+        #Mostra uma lista de alunos disponíveis
+        alunos=self.sessao.query(self.BancoDados.classes.aluno).all()
+        print("Alunos listados")
+        for a in alunos:
+            print("Aluno ID: "+str(a.COD)+" nome: "+a.NOME)
+            print("---------------------------------------------------")
+        id_aluno_alterar=int(input("Digite o número de ID do aluno que deseja excluir: "))
+        # Agora vamos a exclusão
+        tb_alunos=self.BancoDados.classes.aluno
+        aluno_excluir=self.sessao.query(tb_alunos).filter(tb_alunos.COD==id_aluno_alterar)
+        aluno_excluir.delete()
+        self.sessao.commit()
+        input("Pressione [Enter] para voltar ao menu.")
 
 def incluirMatricula():
     pass
