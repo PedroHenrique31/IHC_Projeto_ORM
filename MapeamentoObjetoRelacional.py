@@ -34,6 +34,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.automap import automap_base
 from funcaoMenu import *
+from inserindoMatricula import *
 
 # ------- Variáveis globais ---------------------------------------------------
 # Ligação com o DB feita por um objeto motor -engine- do SQLAlchemy ele que realiza o trabalho de conectar e mapear
@@ -58,6 +59,8 @@ ses = fabrica_sessao() # ses é uma sessão que possui 'motor' para se conectar 
 
 
 
-camada_visao=visualiza(DB,ses)
-camada_visao.menu()
+#camada_visao=visualiza(DB,ses)
+#camada_visao.menu()
+matriculacao=matricula_func(DB,ses)
+matriculacao.inserir()
 ses.close()
