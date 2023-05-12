@@ -34,3 +34,4 @@ class DisciplinaDAO:
     #Não sabia que python tinha destrutor
     def __del__(self):
         self.sessao.close()
+
