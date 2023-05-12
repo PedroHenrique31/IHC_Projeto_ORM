@@ -17,15 +17,20 @@ class DisciplinaDAO:
         fabrica_sessao = sessionmaker(bind=motor) # abre uma sessão de acesso ao BD
         self.sessao=fabrica_sessao()
     def create(self,disciplina):
-        pass
+        self.sessao.add(disciplina)
+        self.sessao.commit()
     def readAll(self):
-        pass
-    def readByName(self):
-        pass
+        disciplinas=self.sessao.query(self.disciplina).all()
+        return disciplinas
+    def readByName(self,nomeDisciplina):
+        disc=self.disciplina
+        disciplinasEncontrada=self.sessao.query(disc).filter_by(disc.NOME.ilike('%'+nomeDisciplina+'%')).all()
+        return disciplinasEncontrada
     def update(self):
-        pass
-    def delete(self):
-        pass
+        self.sessao.commit()
+    def delete(self,disciplina):
+        self.sessao.delete(disciplina)
+        self.sessao.commit()
     #Não sabia que python tinha destrutor
     def __del__(self):
         self.sessao.close()
