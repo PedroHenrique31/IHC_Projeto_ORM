@@ -19,6 +19,9 @@ class DisciplinaDAO:
     def create(self,disciplina):
         self.sessao.add(disciplina)
         self.sessao.commit()
+    def readByID(self,id):
+        disc=self.sessao.query(self.disciplina).filter_by(COD=id).first()
+        return disc
     def readAll(self):
         disciplinas=self.sessao.query(self.disciplina).all()
         return disciplinas
